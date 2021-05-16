@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         recyclerView.adapter
-
-
     }
 
     private fun setDatas(){
@@ -49,8 +47,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeActivity(category: Category){
         val intent = Intent(this@MainActivity,ContactItem::class.java)
+        intent.putExtra("catName",category.name)
         startActivity(intent)
     }
+
+
 
 }
 

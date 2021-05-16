@@ -6,19 +6,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.betterwayass.CategoryList
 import com.example.betterwayass.ContactItem
 import com.example.betterwayass.databinding.CategoryItemBinding
 import com.example.betterwayass.model.Category
 
-class MainAdapter(private val listener:(Category)->Unit): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val listener:(Category)->Unit):
+    RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private val categories = mutableListOf<Category>()
-
+    private val categoryList = CategoryList.getCategoryList()
 
     fun setupCategory(category: Category){
-        this.categories.add(category)
+        this.categoryList.addCategory(category)
         notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -30,19 +32,15 @@ class MainAdapter(private val listener:(Category)->Unit): RecyclerView.Adapter<M
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val category = categories[position]
+        val category = categoryList.categories[position]
         holder.bind(category)
         holder.itemView.setOnClickListener{listener(category)}
     }
 
     override fun getItemCount(): Int {
-        return categories.size
+        return categoryList.categories.size
     }
 
-     fun changeIntent(activity:Activity){
-        val intent = Intent(activity,ContactItem::class.java)
-        activity.startActivity(intent)
-    }
 
     inner class MainViewHolder(private val binding: CategoryItemBinding):RecyclerView.ViewHolder(binding.root) {
 

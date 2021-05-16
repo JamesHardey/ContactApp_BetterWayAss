@@ -1,17 +1,23 @@
 package com.example.betterwayass.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.betterwayass.CategoryList
 import com.example.betterwayass.databinding.ContactViewBinding
+import com.example.betterwayass.model.Category
 import com.example.betterwayass.model.Contact
 
-class ContactAdapter(): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
-    private val contacts = mutableListOf<Contact>()
+class ContactAdapter(category: Category): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+    private val categoryList = CategoryList.getCategoryList()
 
-    fun setupContact(contacts: Contact){
-        this.contacts.add(contacts)
+    private val contacts = categoryList.categories[categoryList.categories.indexOf(category)].contacts
+
+    fun setupContact(contact: Contact){
+        this.contacts.add(contact)
         notifyDataSetChanged()
     }
 
