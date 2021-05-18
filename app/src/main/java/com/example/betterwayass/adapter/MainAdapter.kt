@@ -16,6 +16,7 @@ class MainAdapter(private val listener:(Category)->Unit):
 
     private val categoryList = CategoryList.getCategoryList()
 
+
     fun setupCategory(category: Category){
         this.categoryList.addCategory(category)
         notifyDataSetChanged()

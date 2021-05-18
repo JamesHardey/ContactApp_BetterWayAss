@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setDatas()
         setup(binding)
 
     }
@@ -33,17 +32,11 @@ class MainActivity : AppCompatActivity() {
         val recyclerView=binding.contactCategory
         val layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
         recyclerView.layoutManager = layoutManager
+        
         recyclerView.adapter = adapter
-        recyclerView.adapter
+
     }
 
-    private fun setDatas(){
-        adapter.setupCategory(Category("Friends"))
-        adapter.setupCategory(Category("Family"))
-        adapter.setupCategory(Category("Teacher"))
-        adapter.setupCategory(Category("Pastors"))
-        adapter.setupCategory(Category("Neighbours"))
-    }
 
     private fun changeActivity(category: Category){
         val intent = Intent(this@MainActivity,ContactItem::class.java)

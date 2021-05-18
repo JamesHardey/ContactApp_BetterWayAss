@@ -22,7 +22,7 @@ class ContactItem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val bundle: Bundle? =intent.extras
         val name = bundle?.getString("catName")
-        //title = name
+        title = name
         val category = lookUpCategory(name)
         adapter = ContactAdapter(category)
         binding = ContactItemBinding.inflate(layoutInflater)

@@ -6,6 +6,14 @@ import com.example.betterwayass.model.Contact
 class CategoryList {
     val categories = mutableListOf<Category>()
 
+    init{
+        categories.add(Category("Friends"))
+        categories.add(Category("Family"))
+        categories.add(Category("Tutors"))
+        categories.add(Category("Neighbours"))
+        categories.add(Category("Church Members"))
+    }
+
     companion object {
 
         private var INSTANCE:CategoryList? =null
