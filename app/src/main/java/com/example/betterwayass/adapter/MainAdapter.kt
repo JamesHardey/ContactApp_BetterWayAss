@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.betterwayass.CategoryList
@@ -15,13 +16,6 @@ class MainAdapter(private val listener:(Category)->Unit):
     RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private val categoryList = CategoryList.getCategoryList()
-
-
-    fun setupCategory(category: Category){
-        this.categoryList.addCategory(category)
-        notifyDataSetChanged()
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -40,6 +34,16 @@ class MainAdapter(private val listener:(Category)->Unit):
 
     override fun getItemCount(): Int {
         return categoryList.categories.size
+    }
+
+    fun addCategory(category:Category):Boolean{
+        return if(!categoryList.addCategory(category)){
+            false
+        } else{
+            notifyDataSetChanged()
+            true
+        }
+
     }
 
 

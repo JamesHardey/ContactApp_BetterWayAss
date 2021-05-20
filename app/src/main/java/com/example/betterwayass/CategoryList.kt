@@ -6,6 +6,7 @@ import com.example.betterwayass.model.Contact
 class CategoryList {
     val categories = mutableListOf<Category>()
 
+
     init{
         categories.add(Category("Friends"))
         categories.add(Category("Family"))
@@ -29,8 +30,12 @@ class CategoryList {
 
     }
 
-    fun addCategory(category:Category){
+    fun addCategory(category:Category):Boolean{
+        if(categories.contains(category)){
+            return false
+        }
         categories.add(category)
+        return true
     }
 
     fun addToList(category: Category,contact: Contact){
