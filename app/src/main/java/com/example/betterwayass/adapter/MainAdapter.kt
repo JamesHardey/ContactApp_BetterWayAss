@@ -51,6 +51,8 @@ class MainAdapter(private val listener:(Category)->Unit):
 
         fun bind(category: Category){
             binding.categoryName.text=category.name
+            val namme = category.name
+            binding.imagee.text = namme[0].toString()
         }
 
     }
