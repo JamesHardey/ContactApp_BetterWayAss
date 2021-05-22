@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.contact_view.view.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
     private  lateinit var binding: ActivityMainBinding
     private val adapter = MainAdapter(){item ->
         changeActivity(item)
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title= "Categories"
+        title= "Contacts"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setup(binding)

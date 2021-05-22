@@ -2,6 +2,7 @@ package com.example.betterwayass.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -17,6 +18,14 @@ class MainAdapter(private val listener:(Category)->Unit):
 
     private val categoryList = CategoryList.getCategoryList()
 
+    private val colors = listOf<String>(
+        "#000080","#FF00FF",
+        "#FF0000","#008080",
+        "#008000", "#0000FF"
+    )
+    private var num = 0
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
             CategoryItemBinding.inflate(
@@ -28,7 +37,11 @@ class MainAdapter(private val listener:(Category)->Unit):
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val category = categoryList.categories[position]
-        holder.bind(category)
+        if(num==colors.size){
+            num = 0
+        }
+        holder.bind(category,colors[num])
+        num++
         holder.itemView.setOnClickListener{listener(category)}
     }
 
@@ -40,6 +53,7 @@ class MainAdapter(private val listener:(Category)->Unit):
         return if(!categoryList.addCategory(category)){
             false
         } else{
+
             notifyDataSetChanged()
             true
         }
@@ -49,10 +63,11 @@ class MainAdapter(private val listener:(Category)->Unit):
 
     inner class MainViewHolder(private val binding: CategoryItemBinding):RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(category: Category){
+        fun bind(category: Category,color:String){
             binding.categoryName.text=category.name
             val namme = category.name
             binding.imagee.text = namme[0].toString()
+            binding.cardview.setBackgroundColor(Color.parseColor(color))
         }
 
     }
