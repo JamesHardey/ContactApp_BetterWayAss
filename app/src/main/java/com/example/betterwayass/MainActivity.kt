@@ -45,11 +45,14 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_btn,menu)
         return true
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
@@ -62,13 +65,14 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+
     private fun setup(binding: ActivityMainBinding){
         val recyclerView=binding.contactCategory
         val layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
-
     }
+
 
 
     private fun changeActivity(category: Category){

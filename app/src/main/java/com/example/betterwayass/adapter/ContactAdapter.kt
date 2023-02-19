@@ -11,7 +11,7 @@ import com.example.betterwayass.databinding.ContactViewBinding
 import com.example.betterwayass.model.Category
 import com.example.betterwayass.model.Contact
 
-class ContactAdapter(category: Category): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactAdapter(category: Category, private val listener:(Contact)->Unit): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
     private val categoryList = CategoryList.getCategoryList()
 
     private val contacts = categoryList.categories[categoryList.categories.indexOf(category)].contacts
@@ -34,7 +34,7 @@ class ContactAdapter(category: Category): RecyclerView.Adapter<ContactAdapter.Co
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = contacts[position]
         holder.bindItem(contact)
-
+        holder.itemView.setOnClickListener{listener(contact)}
     }
 
     override fun getItemCount(): Int {
