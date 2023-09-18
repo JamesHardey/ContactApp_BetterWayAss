@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var alertDialog: AlertDialog
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title= "Contacts"
@@ -43,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         setup(binding)
         setupAction()
     }
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -101,7 +98,6 @@ class MainActivity : AppCompatActivity() {
 
         val textview = view.findViewById<EditText>(R.id.editText)
         val btn = view.findViewById<Button>(R.id.btn)
-
 
         btn.setOnClickListener{
             if(textview.text!=null){
