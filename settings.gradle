@@ -1,2 +1,3 @@
 rootProject.name='BetterWayAss'
 include ':app'
+include ':Jetsnack'

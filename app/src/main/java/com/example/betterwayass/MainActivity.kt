@@ -70,15 +70,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-
-
     private fun changeActivity(category: Category){
         val intent = Intent(this@MainActivity,ContactItem::class.java)
         intent.putExtra("catName",category.name)
         startActivity(intent)
     }
-
-
 
     private fun addCategory(category:Category){
         if(!adapter.addCategory(category)){
@@ -87,8 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
         Toast.makeText(this,"New Category created.",Toast.LENGTH_SHORT).show()
     }
-
-
 
     private fun setupAction(){
         val builder = AlertDialog.Builder(this)
